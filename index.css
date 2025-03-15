@@ -38,13 +38,85 @@ header::before {
 }
 
 header {
-    animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 15.s ease-in-out;
 }
 
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(-20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+
+
+
+
+
+/* Invisible hover area over the background */
+.hover-area {
+    position: absolute;
+    bottom: 10%; /* Adjust this based on the image position */
+    left: 50%;
+    width: 200px;
+    height: 300px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0); /* Fully transparent */
+}
+
+/* Speech Bubble (Comic Style) Positioned to the Right */
+.hidden-text {
+    position: absolute;
+    bottom: 5%; /* Align it with image */
+    left: calc(50% + 120px); /* Position to the right of the image */
+    width: 150px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    
+    /* Flexbox for centering text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Add the speech bubble arrow */
+    position: relative;
+}
+
+.hidden-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px; /* Position arrow to point from left */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 20px solid #fff; /* Arrow color matches background */
+}
+
+/* Show text when hovering */
+.hover-area:hover + .hidden-text {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .hidden-text {
+        display: none;
+    }
+}
+
+
+
+
+
 
 
 @media screen and (max-width: 768px) {
@@ -201,7 +273,10 @@ nav .fa-solid {
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight: bold;
+    
 }
+
+
 
 
 
@@ -231,14 +306,23 @@ nav .fa-solid {
     text-shadow: 
         2px 2px 4px rgba(255, 255, 255, 0.6), 
         -2px -2px 4px rgba(0, 0, 0, 0.4); 
+
+        position: absolute;
+        left: -100px; /* Start off-screen (Left) */
+        top: 88%;
+        transform: translateY(-50%) rotate(-90deg);
+        transform-origin: left center;
+        opacity: 0;
     }
 
 
     @media (max-width:700px)
     {
        .second{
+        
         top:80%;
         font-size:25px;
+        
        }
 
 
@@ -318,6 +402,7 @@ font-size:50PX;
 {
     position:relative;
     left: 40%;
+  
 }
 
 
