@@ -32,3 +32,28 @@ var typingEffect = new Typed(".typedText",{
     typeSpeed: Math.floor(Math.random() * (120 - 50) + 50)
 
   })
+
+
+
+//   for .second animation
+
+
+$(document).ready(function(){
+    $(".second").animate({
+        left: "3.5%",  // Moves it to the correct position
+        opacity: 1     // Fades it in smoothly
+    }, 1300); // 1.5 seconds duration
+});
+
+$(document).ready(function(){
+    let newLeft = $(window).width() < 768 ? "6%" : "3.5%"; // Change position for small screens
+
+    $(".second").animate({
+        left: newLeft,  
+        opacity: 1     
+    }, 1300); 
+});
+
+
+
+
